@@ -2,10 +2,12 @@ package com.tognati.course.config;
 
 import com.tognati.course.entities.Category;
 import com.tognati.course.entities.Order;
+import com.tognati.course.entities.Product;
 import com.tognati.course.entities.User;
 import com.tognati.course.entities.enums.OrderStatus;
 import com.tognati.course.repositories.CategoryRepository;
 import com.tognati.course.repositories.OrderRepository;
+import com.tognati.course.repositories.ProductRepository;
 import com.tognati.course.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -28,6 +30,9 @@ public class TestConfig implements CommandLineRunner {
     @Autowired
     private CategoryRepository categoryRepository;
 
+    @Autowired
+    private ProductRepository productRepository;
+
 
     @Override
     public void run(String... args) throws Exception {
@@ -44,5 +49,13 @@ public class TestConfig implements CommandLineRunner {
         Category cat2 = new Category(null, "Books");
         Category cat3 = new Category(null, "Computers");
         categoryRepository.saveAll(Arrays.asList(cat1,cat2,cat3));
+
+        Product p1 = new Product(null, "The Lord Of The Rings", "Loren ipsum", 90.5, "");
+        Product p2 = new Product(null, "Smart TV", "Loren ipsum", 2190.0, "");
+        Product p3 = new Product(null, "Macbook Pro", "Loren ipsum", 1250.0, "");
+        Product p4 = new Product(null, "PC Gamer", "Loren ipsum", 1200.0, "");
+        Product p5 = new Product(null, "Rails for Dummies", "Loren ipsum", 100.99, "");
+        productRepository.saveAll(Arrays.asList(p1,p2,p3,p4,p5));
+
     }
 }
